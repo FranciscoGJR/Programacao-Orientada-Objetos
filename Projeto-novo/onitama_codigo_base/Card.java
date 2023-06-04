@@ -3,7 +3,7 @@
  */
 public class Card {
     /**
-     * Construtor que define os principais atributos de uma cara
+     * Construtor que define os principais atributos de uma carta
      * @param name Nome da carta
      * @param color Cor da carta
      * @param positions Todas as posições relativas de movimento
