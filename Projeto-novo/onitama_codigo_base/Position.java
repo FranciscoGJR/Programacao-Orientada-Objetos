@@ -1,15 +1,15 @@
 public class Position {
     private int row;
-    private int col;
+    private int column;
 
     /**
-     * Construtor que define o valor da Linha e da Coluna da posição, baseado no plano cartesiano]
+     * Construtor que define o valor da Linha e da Coluna da posição, baseado no plano cartesiano
      * @param row Linha
-     * @param col Coluna
+     * @param column Coluna
      */
-    public Position(int row, int col) {
+    public Position(int row, int column) {
         this.row = row;
-        this.col = col;
+        this.column = column;
     }
 
     /**
@@ -25,6 +25,6 @@ public class Position {
      * @return Um valor int representando o eixo Y
      */
     public int getCol() {
-        return col;
+        return column;
     }
 }
