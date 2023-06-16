@@ -2,31 +2,41 @@
  * Classe contendo ações e informações sobre cada espaço (quadrado) no tabuleiro
  */
 public class Spot {
+
+    Piece piece;
+    Position position;
+    Color color;
+
     /**
      * Construtor para espaços com peça e com cor
      * @param piece Peça que inicia nesse espaço do tabuleiro
-     * @param pos Posição do espaço no tabuleiro
+     * @param position Posição do espaço no tabuleiro
      * @param color Cor do espaço no tabuleiro (Templo)
      */
-    public Spot(Piece piece, Position pos, Color color) {
-
+    public Spot(Piece piece, Position position, Color color) {
+        this.piece = piece;
+        this.position = position;
+        this.color = color;
     }
+
 
     /**
      * Construtor para espaços com peça e sem cor
      * @param piece Peça que inicia nesse espaço do tabuleiro
-     * @param pos Posição do espaço no tabuleiro
+     * @param position Posição do espaço no tabuleiro
      */
-    public Spot(Piece piece, Position pos) {
-
+    public Spot(Piece piece, Position position) {
+        this.piece = piece;
+        this.position = position;
     }
+
 
     /**
      * Construtor para espaços sem peça e sem cor
-     * @param pos Posição do espaço no tabuleiro
+     * @param position Posição do espaço no tabuleiro
      */
     public Spot(Position pos) {
-
+        this.position = position;
     }
 
     /**
@@ -34,7 +44,7 @@ public class Spot {
      * @return Objeto Position contendo a posição (coordenadas) do espaço
      */
     public Position getPosition() {
-        return null;
+        return position;
     }
 
     /**
@@ -50,7 +60,7 @@ public class Spot {
      * @return Enum Color com a cor do espaço. Caso o espaço não tenha cor, o valor do enum será NONE
      */
     Color getColor() {
-        return null;
+        return color;
     }
 
     /**

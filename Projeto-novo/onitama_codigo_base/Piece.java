@@ -2,13 +2,18 @@
  * Classe que contém informações das peças de jogo
  */
 public class Piece {
+
+    private Color color;
+    private boolean isMaster;
+
     /**
      * Construtor que define a cor e o tipo da peça
      * @param color Cor da peça
      * @param isMaster Se o tipo da peça é mestre ou não
      */
     public Piece(Color color, boolean isMaster) {
-
+        this.color = color;
+        this.isMaster = isMaster;
     }
 
     /**
@@ -16,7 +21,7 @@ public class Piece {
      * @return Enum Color com a cor da peça
      */
     public Color getColor() {
-        return null;
+        return color;
     }
 
     /**
@@ -24,14 +29,15 @@ public class Piece {
      * @return Booleano true para caso seja um mestre e false caso contrário
      */
     public boolean isMaster() {
-        return false;
+        return isMaster;
     }
 
     /**
      * Método que devolve se a peça ainda está em jogo ou não
      * @return Booleano true para caso esteja em jogo e false caso contrário
      */
+    // TO-DO: implementar is alive (novo atributo?)
     public boolean isAlive() {
-        return false;
+        return true;
     }
 }
