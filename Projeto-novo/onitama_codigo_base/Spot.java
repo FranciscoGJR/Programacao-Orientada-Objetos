@@ -3,9 +3,9 @@
  */
 public class Spot {
 
-    Piece piece;
-    Position position;
-    Color color;
+    private Piece piece;
+    private Position position;
+    private Color color;
 
     /**
      * Construtor para espaços com peça e com cor
@@ -52,7 +52,7 @@ public class Spot {
      * @return Objeto Piece caso tenha uma peça ou null caso o espaço esteja vazio
      */
     public Piece getPiece() {
-        return null;
+        return piece;
     }
 
     /**

@@ -5,7 +5,9 @@ public class main{
         
         // GameImpl
         GameImpl game = new GameImpl();
-        System.out.println(game.board[0][1].piece.getColor());
+        
+        System.out.println(game.getSpotColor(new Position(0, 2)));
+
         System.out.println("FIM DO JOGO");
 
     }

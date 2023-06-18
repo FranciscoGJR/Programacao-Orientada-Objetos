@@ -6,15 +6,14 @@ public class GameImpl implements Game {
     private Player redPlayer;
     private Player bluePlayer;
 
+
     public GameImpl() {
+
         // Inicialize o tabuleiro, as peças e outros componentes do jogo aqui
         board = new Spot[5][5]; 
         creadBoard();
     }
         
-
-    
-
 
     /**
      * Método que devolve a cor da posição do tabuleiro. Se possui uma cor, significa que é um templo. Caso contrário, é um espaço normal
@@ -23,7 +22,8 @@ public class GameImpl implements Game {
      */
     @Override
     public Color getSpotColor(Position position) {
-        return null;
+
+        return board[position.getRow()][position.getCol()].getColor();
     }
 
 
@@ -35,7 +35,7 @@ public class GameImpl implements Game {
     @Override
     public Piece getPiece(Position position) {
         
-        return null;
+        return board[position.getRow()][position.getCol()].getPiece();
     }
 
 
