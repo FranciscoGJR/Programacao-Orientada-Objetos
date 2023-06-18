@@ -35,7 +35,7 @@ public class Spot {
      * Construtor para espaços sem peça e sem cor
      * @param position Posição do espaço no tabuleiro
      */
-    public Spot(Position pos) {
+    public Spot(Position position) {
         this.position = position;
     }
 

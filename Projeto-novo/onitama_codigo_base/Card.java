@@ -1,5 +1,3 @@
-import java.util.jar.Attributes.Name;
-
 /**
  * Classe que contém informações das cartas
  */
@@ -10,7 +8,7 @@ public class Card {
     private Position[] positions;
 
     /**
-     * Construtor que define os principais atributos de uma cara
+     * Construtor que define os principais atributos de uma carta
      * @param name Nome da carta
      * @param color Cor da carta
      * @param positions Todas as posições relativas de movimento
@@ -52,5 +50,17 @@ public class Card {
      * @return Vetor de cartas com todas as cartas do jogo
      */
     public static Card[] createCards() {
-        return null;
-    }}
+        Card[] cardsGame = new Card[8];
+        
+        // position Tiger Blue
+        Position[] positionTiger = new Position[2];
+        positionTiger[0] = new Position(1, 0);
+        positionTiger[1] = new Position(-2, 0);
+        
+        // Card1 [Tiger Blue]
+        Card cardTiger = new Card("Tiger", Color.BLUE, positionTiger);
+        cardsGame[0] = cardTiger;
+        
+        return cardsGame;
+    }
+}

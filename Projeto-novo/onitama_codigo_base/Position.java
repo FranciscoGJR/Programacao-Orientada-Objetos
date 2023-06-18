@@ -1,7 +1,10 @@
+/**
+ * Classe usada para definição de estrutura de posições e movimentos do jogo
+ */
 public class Position {
     private int row;
     private int column;
-
+    
     /**
      * Construtor que define o valor da Linha e da Coluna da posição, baseado no plano cartesiano
      * @param row Linha

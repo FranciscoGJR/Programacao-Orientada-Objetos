@@ -1,16 +1,19 @@
 public class GameImpl implements Game {
 
-    private Color[][] board;
-    private Piece[][] pieces;
-    private Card tableCard;
+    private final int size = 5;
+    public Spot[][] board;
+
     private Player redPlayer;
     private Player bluePlayer;
 
     public GameImpl() {
         // Inicialize o tabuleiro, as peças e outros componentes do jogo aqui
+        board = new Spot[5][5]; 
+        creadBoard();
+    }
         
 
-    }
+    
 
 
     /**
@@ -20,8 +23,7 @@ public class GameImpl implements Game {
      */
     @Override
     public Color getSpotColor(Position position) {
-
-        return board[position.getRow()][position.getCol()];
+        return null;
     }
 
 
@@ -33,7 +35,7 @@ public class GameImpl implements Game {
     @Override
     public Piece getPiece(Position position) {
         
-        return pieces[position.getRow()][position.getCol()];
+        return null;
     }
 
 
@@ -44,7 +46,7 @@ public class GameImpl implements Game {
     @Override
     public Card getTableCard() {
         // Implemente a lógica para retornar a carta na mesa aqui
-        return tableCard;
+        return null;
     }
 
     /**
@@ -78,4 +80,31 @@ public class GameImpl implements Game {
     public void printBoard() {
         // Implemente a lógica para imprimir o tabuleiro aqui
     }
+
+
+    private void creadBoard(){
+
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+
+                //definindo spot vazio
+                board[i][j] = new Spot(new Position(i, j));
+
+                // definindo time BLUE
+                if(i == 0)
+                    board[i][j] = new Spot(new Piece(Color.BLUE, false), new Position(i, j));
+
+                // definindo time RED
+                if(i == 4)
+                    board[i][j] = new Spot(new Piece(Color.RED, false), new Position(i, j));
+
+            }
+        }
+        
+        //definindo mestres
+        board[0][2] = new Spot(new Piece(Color.BLUE, true), new Position(0, 2), Color.BLUE);
+        board[4][2] = new Spot(new Piece(Color.RED, true), new Position(4, 2), Color.RED);
+
+    }   
+
 }

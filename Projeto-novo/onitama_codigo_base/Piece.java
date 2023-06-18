@@ -4,10 +4,10 @@
 public class Piece {
 
     private Color color;
-    private boolean isMaster;
+    public boolean isMaster;
     private boolean isAlive;
 
-    
+
     /**
      * Construtor que define a cor e o tipo da peça
      * @param color Cor da peça
@@ -42,7 +42,6 @@ public class Piece {
      * Método que devolve se a peça ainda está em jogo ou não
      * @return Booleano true para caso esteja em jogo e false caso contrário
      */
-    // TO-DO: implementar is alive (novo atributo?)
     public boolean isAlive() {
         return isAlive;
     }
