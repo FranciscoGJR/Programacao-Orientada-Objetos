@@ -9,9 +9,13 @@ public class GameImpl implements Game {
 
     public GameImpl() {
 
-        // Inicialize o tabuleiro, as peças e outros componentes do jogo aqui
+        // Inicializando o tabuleiro, as peças e outros componentes do jogo aqui
         board = new Spot[5][5]; 
         creadBoard();
+
+        // Inicializando jogadores
+        redPlayer = new Player("Jogador 1", Color.RED, getTableCard(), getTableCard());
+        bluePlayer = new Player("Jogador 2", Color.BLUE, getTableCard(), getTableCard());
     }
         
 
@@ -49,32 +53,37 @@ public class GameImpl implements Game {
         return null;
     }
 
+
     /**
-     * Método que devolve a carta que está na mesa, que será substituída após a próxima jogada
-     * @return Um objeto Card que representa a carta na mesa
+     * Método que devolve as informações sobre o jogador com as peças vermelhas
+     * @return Um objeto Player que representa o jogador vermelho
      */
     @Override
     public Player getRedPlayer() {
-        // Implemente a lógica para retornar o jogador vermelho aqui
+
         return redPlayer;
     }
 
+
     @Override
     public Player getBluePlayer() {
-        // Implemente a lógica para retornar o jogador azul aqui
+        
         return bluePlayer;
     }
+
 
     @Override
     public void makeMove(Piece piece, Card card, Position position) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException {
         // Implemente a lógica para fazer um movimento aqui
     }
 
+
     @Override
     public boolean checkVictory(Color color) {
         // Implemente a lógica para verificar a vitória de um jogador aqui
         return false;
     }
+
 
     @Override
     public void printBoard() {
