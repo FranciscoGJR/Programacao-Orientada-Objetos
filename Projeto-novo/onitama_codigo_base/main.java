@@ -5,8 +5,7 @@ public class main{
         
         // GameImpl
         GameImpl game = new GameImpl();
-        
-        System.out.println(game.getPiece(new Position(0, 2)));
+    
 
         System.out.println("FIM DO JOGO");
 

@@ -31,8 +31,7 @@ public class Player {
     public Player(String name, Color pieceColor, Card card1, Card card2) {
         this.name = name;
         this.pieceColor = pieceColor;
-        cards[0] = card1;
-        cards[1] = card2;
+        this.cards = new Card[] {card1, card2};
     }
 
 
