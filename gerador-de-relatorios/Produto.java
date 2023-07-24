@@ -1,3 +1,4 @@
+
 public interface Produto {
 
 	public void setQtdEstoque(int qtdEstoque);
