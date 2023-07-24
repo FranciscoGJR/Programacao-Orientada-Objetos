@@ -28,6 +28,7 @@ public class GeradorDeRelatorios {
     private String filtro;
     private String argFiltro;
     private int format_flags;
+    private CriterioFiltragem estrategiaFiltragem;
 
     // Construtor da classe GeradorDeRelatorios
     public GeradorDeRelatorios(List<Produto> list, AlgoritmoOrdenacao algoritmo, String criterio, String filtro, String argFiltro, int format_flags) {
@@ -37,6 +38,10 @@ public class GeradorDeRelatorios {
         this.format_flags = format_flags;
         this.filtro = filtro;
         this.argFiltro = argFiltro;
+    }
+
+    public void setEstrategiaFiltragem(CriterioFiltragem estrategiaFiltragem) {
+        this.estrategiaFiltragem = estrategiaFiltragem;
     }
 
     // Método para geração de relatórios
@@ -54,16 +59,7 @@ public class GeradorDeRelatorios {
         int count = 0;
 
         for (Produto p : produtos) {
-            boolean selecionado = false;
-            if (filtro.equals(FILTRO_TODOS)) {
-                selecionado = true;
-            } else if (filtro.equals(FILTRO_ESTOQUE_MENOR_OU_IQUAL_A)) {
-                if (p.getQtdEstoque() <= Integer.parseInt(argFiltro)) selecionado = true;
-            } else if (filtro.equals(FILTRO_CATEGORIA_IGUAL_A)) {
-                if (p.getCategoria().equalsIgnoreCase(argFiltro)) selecionado = true;
-            } else {
-                throw new RuntimeException("Filtro inválido!");
-            }
+            boolean selecionado = estrategiaFiltragem.selecionado(p, argFiltro);
 
             if (selecionado) {
                 out.print("<li>");
@@ -100,12 +96,10 @@ public class GeradorDeRelatorios {
     }
 
     // Métodos auxiliares
-
     public void debug() {
         System.out.println("Gerando relatório para array contendo " + produtos.size() + " produto(s)");
         System.out.println("parametro filtro = '" + argFiltro + "'");
     }
-
     public static List<Produto> carregaProdutos() {
         return Arrays.asList(
             new ProdutoPadrao( 1, "O Hobbit", "Livros", 2, 34.90),
@@ -181,6 +175,20 @@ public class GeradorDeRelatorios {
         }
 
         GeradorDeRelatorios gdr = new GeradorDeRelatorios(carregaProdutos(), algoritmo, opcao_criterio_ord, opcao_criterio_filtro, opcao_parametro_filtro, formato);
+
+        // Definir a estratégia de filtragem conforme a opção escolhida pelo usuário
+        CriterioFiltragem estrategiaFiltragem;
+        if (opcao_criterio_filtro.equals(FILTRO_TODOS)) {
+            estrategiaFiltragem = new CriterioFiltroTodos();
+        } else if (opcao_criterio_filtro.equals(FILTRO_ESTOQUE_MENOR_OU_IQUAL_A)) {
+            estrategiaFiltragem = new CriterioFiltroEstoqueMenorIgual();
+        } else if (opcao_criterio_filtro.equals(FILTRO_CATEGORIA_IGUAL_A)) {
+            estrategiaFiltragem = new CriterioFiltroCategoriaIgual();
+        } else {
+            throw new IllegalArgumentException("Critério de filtragem inválido!");
+        }
+
+        gdr.setEstrategiaFiltragem(estrategiaFiltragem);
 
         try {
             gdr.geraRelatorio("saida.html");
