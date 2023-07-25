@@ -1,3 +1,6 @@
+package src.filtragem;
+import src.model.Produto;
+
 public class CriterioFiltroPrecoIntervalo implements CriterioFiltragem {
     private double precoMinimo;
     private double precoMaximo;

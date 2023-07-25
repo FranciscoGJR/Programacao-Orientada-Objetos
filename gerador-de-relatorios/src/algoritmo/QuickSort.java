@@ -1,4 +1,8 @@
+package src.algoritmo;
 import java.util.List;
+
+import src.model.Produto;
+import src.relatorios.GeradorDeRelatorios;
 
 public class QuickSort implements AlgoritmoOrdenacao {
 

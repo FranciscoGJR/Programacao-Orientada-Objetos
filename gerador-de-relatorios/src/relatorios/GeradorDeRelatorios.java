@@ -1,8 +1,30 @@
+package src.relatorios;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
+
+// package algoritmo
+import src.algoritmo.AlgoritmoOrdenacao;
+import src.algoritmo.InsertionSort;
+import src.algoritmo.QuickSort;
+
+// package filtragem
+import src.filtragem.CriterioFiltragem;
+import src.filtragem.CriterioFiltroCategoriaIgual;
+import src.filtragem.CriterioFiltroEstoqueMenorIgual;
+import src.filtragem.CriterioFiltroTodos;
+import src.formatacao.ProdutoDecorator;
+// package formatacao
+import src.formatacao.ProdutoFormatado;
+import src.formatacao.ProdutoFormatadoItalico;
+import src.formatacao.ProdutoFormatadoNegrito;
+
+// package model
+import src.model.Produto;
+import src.model.ProdutoPadrao;
 
 public class GeradorDeRelatorios {
 
@@ -64,23 +86,9 @@ public class GeradorDeRelatorios {
             if (selecionado) {
                 out.print("<li>");
 
-                if ((format_flags & FORMATO_ITALICO) > 0) {
-                    out.print("<span style=\"font-style:italic\">");
-                }
-
-                if ((format_flags & FORMATO_NEGRITO) > 0) {
-                    out.print("<span style=\"font-weight:bold\">");
-                }
-
-                out.print(p.formataParaImpressao());
-
-                if ((format_flags & FORMATO_NEGRITO) > 0) {
-                    out.print("</span>");
-                }
-
-                if ((format_flags & FORMATO_ITALICO) > 0) {
-                    out.print("</span>");
-                }
+                // Criação dos objetos decoradores para aplicar formatação ao produto
+                ProdutoFormatado produtoFormatado = new ProdutoDecorator();
+                out.print(produtoFormatado.formataParaImpressao());
 
                 out.println("</li>");
                 count++;
