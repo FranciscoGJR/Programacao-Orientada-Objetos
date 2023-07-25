@@ -11,16 +11,13 @@ import src.algoritmo.AlgoritmoOrdenacao;
 import src.algoritmo.InsertionSort;
 import src.algoritmo.QuickSort;
 
+
 // package filtragem
 import src.filtragem.CriterioFiltragem;
 import src.filtragem.CriterioFiltroCategoriaIgual;
 import src.filtragem.CriterioFiltroEstoqueMenorIgual;
 import src.filtragem.CriterioFiltroTodos;
-import src.formatacao.ProdutoDecorator;
-// package formatacao
-import src.formatacao.ProdutoFormatado;
-import src.formatacao.ProdutoFormatadoItalico;
-import src.formatacao.ProdutoFormatadoNegrito;
+
 
 // package model
 import src.model.Produto;
@@ -86,9 +83,23 @@ public class GeradorDeRelatorios {
             if (selecionado) {
                 out.print("<li>");
 
-                // Criação dos objetos decoradores para aplicar formatação ao produto
-                ProdutoFormatado produtoFormatado = new ProdutoDecorator();
-                out.print(produtoFormatado.formataParaImpressao());
+                if ((format_flags & FORMATO_ITALICO) > 0) {
+                    out.print("<span style=\"font-style:italic\">");
+                }
+
+                if ((format_flags & FORMATO_NEGRITO) > 0) {
+                    out.print("<span style=\"font-weight:bold\">");
+                }
+
+                out.print(p.formataParaImpressao());
+
+                if ((format_flags & FORMATO_NEGRITO) > 0) {
+                    out.print("</span>");
+                }
+
+                if ((format_flags & FORMATO_ITALICO) > 0) {
+                    out.print("</span>");
+                }
 
                 out.println("</li>");
                 count++;

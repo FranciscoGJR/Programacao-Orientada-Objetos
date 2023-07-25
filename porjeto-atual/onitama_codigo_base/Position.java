@@ -2,13 +2,17 @@
  * Classe usada para definição de estrutura de posições e movimentos do jogo
  */
 public class Position {
+    private int row;
+    private int column;
+    
     /**
-     * Construtor que define o valor da Linha e da Coluna da posição, baseado no plano cartesiano]
+     * Construtor que define o valor da Linha e da Coluna da posição, baseado no plano cartesiano
      * @param row Linha
-     * @param col Coluna
+     * @param column Coluna
      */
-    public Position(int row, int col) {
-
+    public Position(int row, int column) {
+        this.row = row;
+        this.column = column;
     }
 
     /**
@@ -16,7 +20,7 @@ public class Position {
      * @return Um valor int representando o eixo X
      */
     public int getRow() {
-        return 0;
+        return row;
     }
 
     /**
@@ -24,6 +28,6 @@ public class Position {
      * @return Um valor int representando o eixo Y
      */
     public int getCol() {
-        return 0;
+        return column;
     }
 }
